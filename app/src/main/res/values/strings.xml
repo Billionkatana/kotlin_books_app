@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Books</string>
+    <string name="greeting_message">Hello, </string>
+    <string name="delete">Delete</string>
+    <string name="main_heading">Books</string>
+    <string name="add_edit_book">Book Details</string>
+
+</resources>
