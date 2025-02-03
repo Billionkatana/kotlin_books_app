@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding),
                     ) {
                         composable<BooksListScreen> {
-                            val books = viewModel<ListBooksViewModel>() {
+                            val books = viewModel<ListBooksViewModel> {
                                 ListBooksViewModel(db.dao)
                             }
                             ListBooksScreen(navController, books)
