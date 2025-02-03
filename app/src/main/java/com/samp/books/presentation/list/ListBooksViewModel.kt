@@ -49,7 +49,7 @@ class ListBooksViewModel(val dao: BooksDao) : ViewModel() {
         _sortOrder.value = sortOrder
 
         _books.value = when(sortOrder) {
-            SortByRead -> books.value.sortedBy{it.read}
+            SortByRead -> books.value.sortedBy{!it.read}
             SortByAuthor -> books.value.sortedBy { it.author}
             SortByTitle -> books.value.sortedBy {it.title}
             SortByFictional -> books.value.sortedBy { it.bookType == Fiction }

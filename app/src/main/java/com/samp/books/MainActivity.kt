@@ -43,21 +43,20 @@ class MainActivity : ComponentActivity() {
                     NavHost(
                         navController = navController,
                         startDestination = BooksListScreen,
-                        modifier = Modifier.padding(innerPadding),
+                        modifier = Modifier.padding(innerPadding)
                     ) {
                         composable<BooksListScreen> {
-                            val books = viewModel<ListBooksViewModel> {
+                            val books = viewModel<ListBooksViewModel>{
                                 ListBooksViewModel(db.dao)
                             }
                             ListBooksScreen(navController, books)
                         }
                         composable<AddEditBooksScreen> { navBackStackEntry ->
 
-                            val args: AddEditBooksScreen =
-                                navBackStackEntry.toRoute<AddEditBooksScreen>()
+                            val args: AddEditBooksScreen = navBackStackEntry.toRoute<AddEditBooksScreen>()
 
                             val book = viewModel<AddEditBookViewModel>() {
-                                AddEditBookViewModel(db.dao)
+                                AddEditBookViewModel(db.dao, args.bookId)
                             }
                             AddEditBooksScreen(navController, book)
                         }
