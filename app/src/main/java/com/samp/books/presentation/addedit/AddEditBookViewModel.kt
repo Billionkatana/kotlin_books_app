@@ -6,11 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.samp.books.data.source.BooksDao
 import com.samp.books.presentation.BookVM
-import com.samp.books.presentation.components.AddEditBookEvent
-import com.samp.books.presentation.components.AddEditBookEvent.BookRead
-import com.samp.books.presentation.components.AddEditBookEvent.EnteredTitle
-import com.samp.books.presentation.components.AddEditBookEvent.SaveBook
-import com.samp.books.presentation.components.AddEditBookEvent.TypeChanged
+import com.samp.books.presentation.addedit.AddEditBookEvent.BookRead
+import com.samp.books.presentation.addedit.AddEditBookEvent.EnteredTitle
+import com.samp.books.presentation.addedit.AddEditBookEvent.SaveBook
+import com.samp.books.presentation.addedit.AddEditBookEvent.TypeChanged
 import com.samp.books.presentation.toEntity
 import com.samp.books.utils.getBook
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,7 +29,6 @@ class AddEditBookViewModel(val dao: BooksDao, bookId: Int = -1) : ViewModel() {
             val bookEntity = dao.getBook(bookId)
             _book.value = bookEntity?.let { BookVM.fromEntity(it) } ?: BookVM()
         }
-        _book.value = getBook(bookId) ?: BookVM()
     }
 
     init {

@@ -1,14 +1,9 @@
 package com.samp.books.presentation
 
-import com.samp.books.ui.theme.Purple80
 import androidx.compose.ui.graphics.Color
 import com.samp.books.domain.model.Book
-import com.samp.books.presentation.components.BookEvent
-import com.samp.books.presentation.components.SortByAuthor
-import com.samp.books.presentation.components.SortByFictional
-import com.samp.books.presentation.components.SortByRead
-import com.samp.books.presentation.components.SortByTitle
 import com.samp.books.ui.theme.Purple40
+import com.samp.books.ui.theme.Purple80
 import com.samp.books.ui.theme.PurpleGrey40
 import com.samp.books.ui.theme.PurpleGrey80
 import kotlin.random.Random

@@ -77,8 +77,7 @@ fun ListBooksScreen(navController: NavController, booksViewModel: ListBooksViewM
 
             Spacer(modifier = Modifier.height(8.dp))
             LazyColumn {
-                items(booksViewModel
-                    .books.value) { book ->
+                items(booksViewModel.books.value) { book ->
                     BookCard(book, onDeleteClick = {
                         booksViewModel.onEvent(BookEvent.Delete(book))
                         scope.launch {

@@ -10,12 +10,11 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
 
 @Composable
 fun HorizontalTextRadioButton(color: Color, height: Dp = 40.dp, selected: Boolean, text: String, onOptionSelected: (String) -> Unit) {

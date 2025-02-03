@@ -1,4 +1,4 @@
-package com.samp.books.presentation.components
+package com.samp.books.presentation.addedit
 
 import com.samp.books.presentation.BookType
 

@@ -1,6 +1,5 @@
 package com.samp.books.presentation.components
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +15,7 @@ fun SortOptions(bookOrder: SortOrder = SortByAuthor, onSortOrderChange: (SortOrd
     Row(modifier = Modifier.fillMaxWidth()) {
         BooksRadioButton(text = "Author",
             selected = bookOrder is SortByAuthor,
-            onSelect = {onSortOrderChange(SortByAuthor)}
+            onClick = {onSortOrderChange(SortByAuthor)}
         )
 
         Spacer(modifier = Modifier.width(8.dp))

@@ -1,7 +1,6 @@
 package com.samp.books.presentation.addedit
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FloatingActionButton
@@ -33,7 +31,6 @@ import androidx.navigation.NavHostController
 import com.samp.books.R
 import com.samp.books.presentation.Fiction
 import com.samp.books.presentation.NonFiction
-import com.samp.books.presentation.components.AddEditBookEvent
 import com.samp.books.presentation.components.HorizontalTextRadioButton
 import com.samp.books.utils.BooksListScreen
 import kotlinx.coroutines.flow.collectLatest
@@ -42,39 +39,20 @@ import kotlinx.coroutines.flow.collectLatest
 fun AddEditBooksScreen(navController: NavHostController, viewModel: AddEditBookViewModel) {
 
     val snackbarHostState = remember { SnackbarHostState() }
+
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
-            Box(
-                modifier = Modifier.fillMaxWidth()
+            FloatingActionButton(
+                onClick = {
+                    viewModel.onEvent(AddEditBookEvent.SaveBook)
+//                    navController.navigate(BooksListScreen)
+                },
             ) {
-                FloatingActionButton(
-                    onClick = {
-                        viewModel.onEvent(AddEditBookEvent.SaveBook)
-
-                        navController.navigate(BooksListScreen)
-                    },
-                    modifier = Modifier.background(Color.Transparent)
-                        .align(Alignment.BottomEnd)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Done,
-                        contentDescription = "Save book",
-                    )
-                }
-                FloatingActionButton(
-                    onClick = {
-                        navController.navigate(BooksListScreen)
-                    },
-                    modifier = Modifier.background(Color.Transparent)
-                        .align(Alignment.BottomStart)
-                        .padding(start = 30.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Close,
-                        contentDescription = "Back",
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Default.Done,
+                    contentDescription = "Save book",
+                )
             }
         }
     ) { contentPadding ->
@@ -90,7 +68,6 @@ fun AddEditBooksScreen(navController: NavHostController, viewModel: AddEditBookV
             }
         }
 
-
         val book = viewModel.book.value
         Column(
             modifier = Modifier
@@ -104,7 +81,6 @@ fun AddEditBooksScreen(navController: NavHostController, viewModel: AddEditBookV
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(16.dp),
-                color = Color.White
             )
             OutlinedTextField(
                 value = book.author,
@@ -114,10 +90,9 @@ fun AddEditBooksScreen(navController: NavHostController, viewModel: AddEditBookV
                 },
                 singleLine = true,
                 textStyle = MaterialTheme.typography.headlineMedium.copy(
-                    Color.White
+                    book.bookType.foregroundColour
                 ),
                 modifier = Modifier.fillMaxWidth()
-
             )
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
