@@ -16,7 +16,7 @@ fun SortOptions(bookOrder: SortOrder = SortByAuthor, onSortOrderChange: (SortOrd
     Row(modifier = Modifier.fillMaxWidth()) {
         BooksRadioButton(text = "Author",
             selected = bookOrder is SortByAuthor,
-            onClick = {onSortOrderChange(SortByAuthor)}
+            onSelect = {onSortOrderChange(SortByAuthor)}
         )
 
         Spacer(modifier = Modifier.width(8.dp))

@@ -31,21 +31,3 @@ val bookList: MutableList<BookVM> = mutableListOf(
 fun getBook(bookId: Int) : BookVM? {
     return bookList.find {it.id == bookId}
 }
-
-fun getBooks(orderBy: SortOrder) = flow {
-    emit(when(orderBy) {
-        SortByAuthor -> bookList.sortedBy {it.author}
-        SortByRead -> bookList.sortedBy{it.read}
-        SortByTitle -> bookList.sortedBy{it.title}
-        SortByFictional -> bookList.sortedBy{it.bookType == Fiction }
-    })
-}
-
-fun addOrUpdateBook(book: BookVM) {
-    val existingBook = bookList.find {it.id == book.id}
-
-    existingBook?.let {
-        bookList.remove(book)
-    }
-    bookList.add(book)
-}
