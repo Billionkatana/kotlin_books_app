@@ -38,29 +38,30 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BooksTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
                         startDestination = BooksListScreen,
                         modifier = Modifier.padding(innerPadding),
-                        ) {
-                            composable<BooksListScreen> {
-                                val books = viewModel<ListBooksViewModel>(){
-                                    ListBooksViewModel(db.dao)
-                                }
-                                ListBooksScreen(navController, books)
+                    ) {
+                        composable<BooksListScreen> {
+                            val books = viewModel<ListBooksViewModel>() {
+                                ListBooksViewModel(db.dao)
                             }
-                            composable<AddEditBooksScreen> { navBackStackEntry ->
-
-                                val args: AddEditBooksScreen = navBackStackEntry.toRoute<AddEditBooksScreen>()
-
-                                val book = viewModel<AddEditBookViewModel>() {
-                                    AddEditBookViewModel(db.dao)
-                                }
-                                AddEditBooksScreen(navController, book)
-                            }
+                            ListBooksScreen(navController, books)
                         }
+                        composable<AddEditBooksScreen> { navBackStackEntry ->
+
+                            val args: AddEditBooksScreen =
+                                navBackStackEntry.toRoute<AddEditBooksScreen>()
+
+                            val book = viewModel<AddEditBookViewModel>() {
+                                AddEditBookViewModel(db.dao)
+                            }
+                            AddEditBooksScreen(navController, book)
+                        }
+                    }
 
                 }
             }
